@@ -15,8 +15,8 @@ geonames_postal_code_repo="http://download.geonames.org/export/zip/"
 dbhost="localhost"
 dbport=3306
 dbname="geonames"
-dbusername="root"
-dbpassword="root"
+dbusername="geonames"
+dbpassword=replacethis
 
 # Default value for download folder
 download_folder="$working_dir/download"
@@ -161,6 +161,7 @@ esac
 case "$action" in
     create-db)
         echo "Creating database $dbname..."
+	echo  "mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse \"DROP DATABASE IF EXISTS $dbname;\""
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "DROP DATABASE IF EXISTS $dbname;"
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "CREATE DATABASE $dbname DEFAULT CHARACTER SET utf8mb4;" 
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "USE $dbname;" 
@@ -186,6 +187,11 @@ case "$action" in
     truncate-db)
         echo "Truncating \"geonames\" database"
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_truncate_db.sql"
+    ;;
+
+    delete-unneccessary)
+        echo "deleting unneccessary entries"
+        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/delete_unneccessary.sql"
     ;;
 esac
 

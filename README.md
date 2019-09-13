@@ -12,3 +12,15 @@ Where "action" can be:
 - **truncate-db** Removes geonames data from db.
     
 The <a href="http://codigofuerte.github.com/GeoNames-MySQL-DataImport" target="_blank">reference site</a> is still under construction for this new version. Stay tuned to this site.
+
+### BFM notes
+
+Don't forget to add the password in `geonames_importer.sh`.
+
+An additional command `./geonames_importer.sh -a delete-unneccessary` was added. This command removes entries with population numbers < 100 and buildings (featue code BLDG).
+
+Before updating, make sure to truncate the existing data. Then import again and delete unncessary.
+
+Note that for older mysql versions, an index of varchar with length `varchar(200)` is too much. Whenever an entry is used as an index, change occurrences of `varchar(200)` to `varchar(191)`.
+
+Maybe increase the mysql values for `net_read_timeout`, `net_write_timeout` and `connection_timeout` in case you get errors in that regard.
