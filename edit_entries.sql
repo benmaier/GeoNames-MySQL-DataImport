@@ -264,3 +264,20 @@ WHERE fc.code in (
 );
     
 UPDATE geonames.alternatename SET alternateName = "Australien und Neuseeland" WHERE isoLanguage = 'de' AND alternateName = 'Austral Anden Nev Zealand';
+
+UPDATE geonames.alternatename SET isShortName = 1 WHERE alternatenameId IN (
+     1563766
+    ,2727971
+    ,617790
+    ,1561488
+    ,1554487
+    ,1561881
+    ,1558531
+    ,1619327
+    ,1555855
+    ,1563581
+    ,1562791
+    ,2422318
+    ,1561708
+);
+

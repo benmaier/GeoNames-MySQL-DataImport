@@ -189,9 +189,9 @@ case "$action" in
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_truncate_db.sql"
     ;;
 
-    delete-unneccessary)
-        echo "deleting unneccessary entries"
-        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/delete_unneccessary.sql"
+    edit-entries)
+        echo "editing entries"
+        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/edit_entries.sql"
     ;;
 esac
 
