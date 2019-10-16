@@ -272,7 +272,6 @@ UPDATE geonames.alternatename SET isShortName = 1 WHERE alternatenameId IN (
     ,1561488
     ,1554487
     ,1561881
-    ,1558531
     ,1619327
     ,1555855
     ,1563581
