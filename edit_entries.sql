@@ -1,3 +1,4 @@
+-- Delete alternatenames of geoname entries that have uninteresting featurecodes or a population < 100
 DELETE alternatename
 FROM alternatename
 LEFT JOIN
@@ -121,6 +122,7 @@ WHERE
         ,'VAL'
     );
 
+-- Delete entries that have uninteresting featurecodes or a population < 100
 DELETE geoname
 FROM geoname
 WHERE
@@ -242,6 +244,7 @@ WHERE
         ,'VAL'
     );
 
+-- Delete those featurecodes that are not associated with any entries anymore
 DELETE 
 FROM geonames.featureCodes as fc
 WHERE fc.code in (
@@ -260,9 +263,11 @@ WHERE fc.code in (
           ) as temp0
             WHERE temp0.geonameid is null
 );
-    
+
+-- This a wrongly named region 
 UPDATE geonames.alternatename SET alternateName = "Australien und Neuseeland" WHERE isoLanguage = 'de' AND alternateName = 'Austral Anden Nev Zealand';
 
+-- THESE ARE GERMAN NAMES THAT MISS THE isShortName Attribute
 UPDATE geonames.alternatename SET isShortName = 1 WHERE alternatenameId IN (
      1563766
     ,2727971
