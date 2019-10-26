@@ -28,10 +28,10 @@ GRANT ALL PRIVILEGES ON geonames.* TO 'geonames'@'localhost' IDENTIFIED BY 'REPL
 You might have to increase the mysql values for `net_read_timeout`, `net_write_timeout`, and `connect_timeout` in case you get time-out errors when importing.
 
 ```sql
-SET GLOBAL connect_timeout=3600
-SET GLOBAL wait_timeout=3600
-SET GLOBAL net_read_timeout=3600
-SET GLOBAL net_write_timeout=3600
+SET GLOBAL connect_timeout=3600;
+SET GLOBAL wait_timeout=3600;
+SET GLOBAL net_read_timeout=3600;
+SET GLOBAL net_write_timeout=3600;
 ```
 
 ## Configure the script
