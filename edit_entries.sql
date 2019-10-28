@@ -122,6 +122,22 @@ WHERE
         ,'VAL'
     );
 
+-- Delete hierarchy entries of geoname entries that have uninteresting featurecodes or a population < 100
+DELETE geonames.hierarchy
+FROM geonames.hierarchy 
+LEFT JOIN
+    geonames.geoname AS g ON g.geonameid = geonames.hierarchy.parentId
+WHERE
+	g.geonameid IS NULl;
+
+-- Delete hierarchy entries of geoname entries that have uninteresting featurecodes or a population < 100
+DELETE geonames.hierarchy
+FROM geonames.hierarchy 
+LEFT JOIN
+    geonames.geoname AS g ON g.geonameid = geonames.hierarchy.childId
+WHERE
+	g.geonameid IS NULl;
+
 -- Delete entries that have uninteresting featurecodes or a population < 100
 DELETE geoname
 FROM geoname
