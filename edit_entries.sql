@@ -122,6 +122,10 @@ WHERE
         ,'VAL'
     );
 
+DELETE FROM geonames.alternatename
+WHERE
+    isoLanguage = 'link';
+
 -- Delete hierarchy entries of geoname entries that have uninteresting featurecodes or a population < 100
 DELETE geonames.hierarchy
 FROM geonames.hierarchy 
