@@ -20,7 +20,8 @@ CREATE DATABASE geonames CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 Create a user that can only access the `geonames` database.
 
 ```sql
-GRANT ALL PRIVILEGES ON geonames.* TO 'geonames'@'localhost' IDENTIFIED BY 'REPLACETHISWITHTHERIGHTPASSWORD';
+CREATE USER 'geonames'@'localhost' IDENTIFIED BY 'REPLACETHISWITHTHERIGHTPASSWORD';
+GRANT ALL PRIVILEGES ON geonames.* TO 'geonames'@'localhost';
 ```
 
 ### Optional: Set timeout values for imports
